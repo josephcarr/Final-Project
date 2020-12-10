@@ -99,53 +99,25 @@ LinkedList::~LinkedList(){
 int LinkedList::dotProduct(const int& r, const int& c, Node* headOne, Node* headTwo) {
     int sum = 0;
 
-    //slower version (does not use transpose matrix)
-    /*while ((headOne != nullptr && headTwo != nullptr) && (headOne->row <= r)) {
-        //checks if the first matrix element row = the row of the element we are computing
-        if (headOne->row == r) {
-            //checks if the second matrix element col = the col of the element we are computing
-            if (headTwo->col == c) {
-                //checks if the first matrix element col = the row of the second matrix element so we can multiply them and add them to the sum
-                if (headOne->col == headTwo->row) {
-                    sum += headOne->data * headTwo->data;
-                    headOne = headOne->next;
-                    headTwo = headTwo->next;
-                }
-                //if matrixOne col < matrixTwo row, go to next element in matrixOne
-                else if (headOne->col < headTwo->row) {
-                    headOne = headOne->next;
-                }
-                //if matrixOne col > matrixTwo row, go to next element in matrixOne
-                else {
-                    headTwo = headTwo->next;
-                }
-            }
-            //if matrixTwo col does not = the col of the element we are computing, go to next element of matrixTwo
-            else {
-                headTwo = headTwo->next;
-            }
-        }
-        //if matrixOne row does not = the row of the element we are computing, go to next element of matrixone
-        else {
-            headOne = headOne->next;
-        }
-    }*/
-
-    //faster version (uses transpose matrix)
+    //run while matrix elements does not = null or element of matrixOne is not > the row of computation
     while ((headOne != nullptr && headTwo != nullptr) && (headOne->row <= r)) {
-        if ((headOne->row == r && headTwo->row == c) && (headOne->col == headTwo->col)) {
+        //if headOne row = row pos and headTwo column = column pos && headOne column matches headTwo row, clalculate product of values and add them to sum
+        if ((headOne->row == r && headTwo->col == c) && (headOne->col == headTwo->row)) {
             sum += headOne->data * headTwo->data;
             headOne = headOne->next;
             headTwo = headTwo->next;
         }
-        else if (headOne->row < r || (headTwo->row == c && headOne->col < headTwo->col)) {
+        //if headOne row < row pos or headTwo col is at correct col pos and headOne col < headTwo row, go to next element in matrixOne
+        else if (headOne->row < r || (headTwo->col == c && headOne->col < headTwo->row)) {
             headOne = headOne->next;
         }
+        //if all else, go to next element in matrixTwo
         else {
             headTwo = headTwo->next;
         }
     }
 
+    //returns the value of the element for finalMatrix at [r, c]
     return sum;
 }
 
@@ -349,8 +321,9 @@ void LinkedList::write(std::string outfile) {
     		}
     	}
 
+
     	outMatrix << '\n';
-    	
+
     }
     outMatrix.close();
 
