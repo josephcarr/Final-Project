@@ -1,3 +1,6 @@
+#ifndef __NODE_H__
+#define __NODE_H__
+
 #pragma once
 
 class Node{
@@ -12,3 +15,5 @@ class Node{
         Node(int row, int col, int data);
         Node(int row, int col, int data, Node* next);
 };
+
+#endif
