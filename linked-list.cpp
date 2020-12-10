@@ -349,9 +349,8 @@ void LinkedList::write(std::string outfile) {
     		}
     	}
 
-    	if (temp != nullptr) {
-    	    outMatrix << '\n';
-    	}
+    	outMatrix << '\n';
+    	
     }
     outMatrix.close();
 
