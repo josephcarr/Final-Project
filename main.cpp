@@ -51,11 +51,8 @@ int main(int argc, char **argv) {
         c_end = std::clock();
     }
     else if (operation == "m") {
-        LinkedList tMatrix(matrixTwo.get_cols(), matrixTwo.get_rows());
-        tMatrix.transpose(matrixTwo.get_head());
-
         c_start = std::clock();
-        finalMatrix.multiply(matrixOne.get_head(), tMatrix.get_head());
+        finalMatrix.multiply(matrixOne.get_head(), matrixTwo.get_head());
         c_end = std::clock();
     }
 
@@ -63,7 +60,7 @@ int main(int argc, char **argv) {
 
     std::cout << "Done!" << std::endl;
 
-    
+
     //prints out the contents of matricies
     matrixString = matrixOne.to_string();
     std::cout << "Matrix One:" << "\n" << matrixString << std::endl;
