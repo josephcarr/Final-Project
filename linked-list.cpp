@@ -1,6 +1,3 @@
-#ifndef __LIST_H__
-#define __LIST_H__
-
 #include "linked-list.h"
 #include <iostream>
 
@@ -360,8 +357,4 @@ void LinkedList::write(std::string outfile) {
 
     return;
 }
-
-#endif
-
-
 
