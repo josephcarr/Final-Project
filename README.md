@@ -12,6 +12,7 @@ To run the code, use this format:
 
      ./prog <matrix 1 file name> <matrix 2 file name> <output file name> <operation>
      
+        *file names should end in .txt
         *For the operation, use the letters "a" (addition) and "m" (multiplication)
    
  examples:
